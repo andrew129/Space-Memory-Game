@@ -1,0 +1,91 @@
+[
+    {
+        "id": 1,
+        "name": "space-1",
+        "image": "../images/galaxy1.png"
+    },
+    
+    {
+        "id": 2,
+        "name": "space-2",
+        "image": "../images/galaxy2.png"
+    },
+
+    {
+        "id": 3,
+        "name": "space-3",
+        "image": "../images/galaxy3.png"
+    },
+
+    {
+        "id": 4,
+        "name": "space-4",
+        "image": "../images/galaxy4.png"
+    },
+
+    {
+        "id": 5,
+        "name": "space-5",
+        "image": "../images/galaxy5.jpg"
+    },
+
+    {
+        "id": 6,
+        "name": "space-6",
+        "image": "../images/galaxy6.jpg"
+    },
+
+    {
+        "id": 7,
+        "name": "space-7",
+        "image": "../images/galaxy7.jpg"
+    },
+
+    {
+        "id": 8,
+        "name": "space-8",
+        "image": "../images/galaxy8.jpg"
+    },
+
+    {
+        "id": 9,
+        "name": "space-9",
+        "image": "../images/galaxy9.jpg"
+    },
+
+    {
+        "id": 10,
+        "name": "space-10",
+        "image": "../images/galaxy10.jpg"
+    },
+
+    {
+        "id": 11,
+        "name": "space-11",
+        "image": "../images/galaxy11.jpg"
+    },
+
+    {
+        "id": 12,
+        "name": "space-12",
+        "image": "../images/galaxy12.jpg"
+    },
+
+    {
+        "id": 13,
+        "name": "space-13",
+        "image": "../images/galaxy13.jpg"
+    },
+
+    {
+        "id": 14,
+        "name": "space-14",
+        "image": "../images/galaxy14.jpg"
+    },
+
+    {
+        "id": 15,
+        "name": "space-15",
+        "image": "../images/galaxy15.jpg"
+    }
+]

@@ -1,0 +1,25 @@
+.navbar {
+   border-bottom: white solid 2px;
+   color: #FFFFFF;
+   text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #007bff, 0 0 30px #007BFF, 0 0 40px #007BFF, 0 0 55px #007BFF, 0 0 75px #007bff;
+   margin-bottom: 50px;
+}
+
+#message {
+   margin-left: 170px;
+   margin-top: 9px;
+}
+
+#score {
+   margin-right: 30px;
+   margin-left: 200px;
+   margin-top: 8px;
+}
+
+#highscore {
+   margin-top: 8px;
+}
+
+
+
+
