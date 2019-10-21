@@ -16,7 +16,7 @@ class App extends Component {
   }
   //method for handling the picture clicks
   handleClickedImage = id => {
-    this.timerRun()
+    // this.timerRun()
     const filteredSpace = this.state.space.filter(space => space.id === id)
     if (this.state.score < 15) {
       this.setState({ clicked: this.state.clicked.concat(filteredSpace[0].id) })
@@ -36,6 +36,9 @@ class App extends Component {
     if (this.state.clicked.includes(id)) {
       this.setState({ message: 'Your Memory Sucks, Try Again' })
       this.reset()
+      if (this.state.score > this.state.highScore) {
+        this.setState({highScore: this.state.score})
+      }
     }
 
     if (this.state.score === 15) {
@@ -49,27 +52,26 @@ class App extends Component {
     this.setState({ seconds: 5 })
     this.setState({ clicked: [] })
     this.setState({ score: 0 })
-    this.setState({ highScore: this.state.score })
     this.randomize()
     setTimeout(() => {
       this.setState({ message: 'Click on Any Galaxy to Begin' })
     }, 3000)
   }
 
-  timerRun = () => {
-    let intervalId;
-    clearInterval(intervalId)
-    this.setState({ seconds: 5 })
-    intervalId = setInterval(() => {
-      this.setState({ seconds: this.state.seconds - 1 })
-    }, 1000)
-    if (this.state.seconds === 0) {
-      clearInterval(intervalId)
-      this.randomize()
-      this.setState({ score: this.state.score - 1})
-      this.setState({ message: 'Come On, Be Faster'})
-    }
-  }
+  // timerRun = () => {
+  //   let intervalId;
+  //   clearInterval(intervalId)
+  //   this.setState({ seconds: 5 })
+  //   intervalId = setInterval(() => {
+  //     this.setState({ seconds: this.state.seconds - 1 })
+  //   }, 1000)
+  //   if (this.state.seconds === 0) {
+  //     clearInterval(intervalId)
+  //     this.randomize()
+  //     this.setState({ score: this.state.score - 1})
+  //     this.setState({ message: 'Come On, Be Faster'})
+  //   }
+  // }
   //best randomize algorithm out there
   randomize = () => {
     let newArray = space;
@@ -88,7 +90,8 @@ class App extends Component {
           score={this.state.score}
           highScore={this.state.highScore}
         />
-        <h4>Time Remaining: {this.state.seconds}</h4>
+        <h4>It's a memory test, click on each picture once to win.  You lose by clicking on the same picture twice</h4>
+        {/* <h4>Time Remaining: {this.state.seconds}</h4> */}
         <Wrapper>
           {this.state.space.map(space => (
             <ImgContainer
