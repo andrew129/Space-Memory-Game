@@ -9,16 +9,59 @@ class App extends Component {
   state = {
     space,
     score: 0,
+    clicked: [],
     highScore: 0,
     message: 'Click on Any Galaxy to Begin'
   }
 
   handleClickedImage = id => {
-    this.setState({ score: this.state.score + 1})
+    const filteredSpace = this.state.space.filter(space => space.id === id)
+    if (this.state.score < 15) {
+      this.setState({ clicked: this.state.clicked.concat(filteredSpace[0].id) })
+      console.log(this.state.clicked)
+      this.randomize()
+      this.setState({ score: this.state.score + 1})
+    }
+
+    if (this.state.score > this.state.highScore) {
+      this.setState({ highScore: this.state.score })
+    }
+
+    if (this.state.clicked.includes(id)) {
+      this.setState({ score: 0 })
+      this.setState({ message: 'Your Memory Sucks' })
+      this.setState({ highScore: this.state.score })
+      this.setState({ clicked: [] })
+      setTimeout(() => {
+        this.setState({ message: 'Click on Any Galaxy to Begin' })
+      }, 3000)
+    }
+
+    if (this.state.score === 15) {
+      this.setState({ clicked: [] })
+      this.setState({ highScore: this.state.score })
+      this.setState({ score: 0 })
+      this.randomize()
+      this.setState({ message: "Congratulations You don't Suck" })
+      setTimeout(() => {
+        this.setState({ message: 'Click on Any Galaxy to Begin' })
+      }, 3000)
+    }
   }
 
+  randomize = () => {
+    let newArray = space;
+    for (let i = newArray.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray
+  }
+
+
+  //**if this.state.message === 'your memory sucks' {this.setState({ highScore: this.state.score })} */
+
   render() {
-    console.log(space[0].image)
     return (
       <React.Fragment>
         <Header
@@ -37,6 +80,11 @@ class App extends Component {
             />
           ))}
         </Wrapper>
+        <footer className="footer-container">
+          <p className="footer-content">
+              Copyright © 2019 <a className="github-link" href='https://github.com/andrew129'>Andrew Stiles</a>
+          </p>
+        </footer>
       </React.Fragment>
     )
   }

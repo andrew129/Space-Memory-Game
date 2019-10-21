@@ -1,5 +1,5 @@
 html, body {
-    background-image: url('./images/starry.jpg');
+    background-image: url('./starry.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     -webkit-background-size: cover;
@@ -7,9 +7,21 @@ html, body {
     -o-background-size: cover;
     width: 100%;
     height: 100%;
+    text-align: center;
 }
 
 Header {
     display: flex;
     justify-content: space-between;
+}
+
+.footer-container {
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start; 
+}
+
+a {
+    text-decoration: none; 
+    color: #DB9B00;
 }
