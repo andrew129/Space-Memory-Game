@@ -11,10 +11,12 @@ class App extends Component {
     score: 0,
     clicked: [],
     highScore: 0,
+    seconds: 5,
     message: 'Click on Any Galaxy to Begin'
   }
-
+  //method for handling the picture clicks
   handleClickedImage = id => {
+    this.timerRun()
     const filteredSpace = this.state.space.filter(space => space.id === id)
     if (this.state.score < 15) {
       this.setState({ clicked: this.state.clicked.concat(filteredSpace[0].id) })
@@ -27,28 +29,48 @@ class App extends Component {
       this.setState({ highScore: this.state.score })
     }
 
+    if (this.state.score === 5) {
+      this.setState({ message: "You're Doing Good, Keep it Up"})
+    }
+
     if (this.state.clicked.includes(id)) {
-      this.setState({ score: 0 })
-      this.setState({ message: 'Your Memory Sucks' })
-      this.setState({ highScore: this.state.score })
-      this.setState({ clicked: [] })
-      setTimeout(() => {
-        this.setState({ message: 'Click on Any Galaxy to Begin' })
-      }, 3000)
+      this.setState({ message: 'Your Memory Sucks, Try Again' })
+      this.reset()
     }
 
     if (this.state.score === 15) {
-      this.setState({ clicked: [] })
-      this.setState({ highScore: this.state.score })
-      this.setState({ score: 0 })
-      this.randomize()
       this.setState({ message: "Congratulations You don't Suck" })
-      setTimeout(() => {
-        this.setState({ message: 'Click on Any Galaxy to Begin' })
-      }, 3000)
+      this.reset()
     }
   }
 
+  //start the game over
+  reset = () => {
+    this.setState({ seconds: 5 })
+    this.setState({ clicked: [] })
+    this.setState({ score: 0 })
+    this.setState({ highScore: this.state.score })
+    this.randomize()
+    setTimeout(() => {
+      this.setState({ message: 'Click on Any Galaxy to Begin' })
+    }, 3000)
+  }
+
+  timerRun = () => {
+    let intervalId;
+    clearInterval(intervalId)
+    this.setState({ seconds: 5 })
+    intervalId = setInterval(() => {
+      this.setState({ seconds: this.state.seconds - 1 })
+    }, 1000)
+    if (this.state.seconds === 0) {
+      clearInterval(intervalId)
+      this.randomize()
+      this.setState({ score: this.state.score - 1})
+      this.setState({ message: 'Come On, Be Faster'})
+    }
+  }
+  //best randomize algorithm out there
   randomize = () => {
     let newArray = space;
     for (let i = newArray.length - 1; i > 0; i--) {
@@ -57,10 +79,7 @@ class App extends Component {
     }
     return newArray
   }
-
-
-  //**if this.state.message === 'your memory sucks' {this.setState({ highScore: this.state.score })} */
-
+  //rendering the html on the page
   render() {
     return (
       <React.Fragment>
@@ -69,6 +88,7 @@ class App extends Component {
           score={this.state.score}
           highScore={this.state.highScore}
         />
+        <h4>Time Remaining: {this.state.seconds}</h4>
         <Wrapper>
           {this.state.space.map(space => (
             <ImgContainer

@@ -25,3 +25,11 @@ a {
     text-decoration: none; 
     color: #DB9B00;
 }
+
+h4 {
+    color: #FFFFFF;
+    text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #007bff, 0 0 30px #007BFF, 0 0 40px #007BFF, 0 0 55px #007BFF, 0 0 75px #007bff;
+    position: absolute;
+    bottom: 685px;
+    left: 650px;
+}
