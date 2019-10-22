@@ -12,10 +12,12 @@ class App extends Component {
     clicked: [],
     highScore: 0,
     seconds: 5,
+    directions: "It's a memory test, click on each picture once to win. You lose by clicking on the same picture twice.",
     message: 'Click on Any Galaxy to Begin'
   }
   //method for handling the picture clicks
   handleClickedImage = id => {
+    this.setState({ directions: "" })
     // this.timerRun()
     const filteredSpace = this.state.space.filter(space => space.id === id)
     if (this.state.score < 15) {
@@ -54,8 +56,9 @@ class App extends Component {
     this.setState({ score: 0 })
     this.randomize()
     setTimeout(() => {
+      this.setState({ directions: "It's a memory test, click on each picture once to win. You lose by clicking on the same picture twice." })
       this.setState({ message: 'Click on Any Galaxy to Begin' })
-    }, 3000)
+    }, 2000)
   }
 
   // timerRun = () => {
@@ -90,7 +93,7 @@ class App extends Component {
           score={this.state.score}
           highScore={this.state.highScore}
         />
-        <h4>It's a memory test, click on each picture once to win.  You lose by clicking on the same picture twice</h4>
+        <h4>{this.state.directions}</h4>
         {/* <h4>Time Remaining: {this.state.seconds}</h4> */}
         <Wrapper>
           {this.state.space.map(space => (
