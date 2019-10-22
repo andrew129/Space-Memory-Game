@@ -4,6 +4,7 @@ import Header from './components/header/header'
 import ImgContainer from './components/pictures/pictures'
 import space from './space.json'
 import Wrapper from './components/wrapper/wrapper'
+import { relative } from "path";
 
 class App extends Component {
   state = {
@@ -36,7 +37,7 @@ class App extends Component {
     }
 
     if (this.state.clicked.includes(id)) {
-      this.setState({ message: 'Your Memory Sucks, Try Again' })
+      this.setState({ message: 'You Lost, Try Again' })
       this.reset()
       if (this.state.score > this.state.highScore) {
         this.setState({highScore: this.state.score})
@@ -106,10 +107,16 @@ class App extends Component {
             />
           ))}
         </Wrapper>
-        <footer className="footer-container">
-          <p className="footer-content">
-              Copyright © 2019 <a className="github-link" href='https://github.com/andrew129'>Andrew Stiles</a>
-          </p>
+        <footer className="footer">
+          <div className="container">
+            <span id='copyright' className="text-white">Copyright © 2019 Andrew Stiles
+              {/* <ul className='icons'>
+                <li><a className='btn' target='blank' href="https://github.com/andrew129"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a></li>
+                <li><a className='btn' target='blank' href="https://www.linkedin.com/in/andrew-stiles-12b41167"><i className="fa fa-2x fa-linkedin-square" aria-hidden="true"></i></a></li>
+                <li><a className='btn' target='blank' href='https://soundcloud.com/en1gmamusic/tracks'><i className="fa fa-2x fa-soundcloud" aria-hidden="true"></i></a></li>
+              </ul> */}
+            </span>
+          </div>
         </footer>
       </React.Fragment>
     )
