@@ -4,7 +4,6 @@ import Header from './components/header/header'
 import ImgContainer from './components/pictures/pictures'
 import space from './space.json'
 import Wrapper from './components/wrapper/wrapper'
-import { relative } from "path";
 
 class App extends Component {
   state = {
