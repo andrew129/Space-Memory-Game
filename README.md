@@ -6,7 +6,7 @@ Test your skills in this memory game developed entirely with React. Try and get 
 
 # Preview 
 
-![Preview](https://github.com/andrew129/Space-Memory-Game/blob/master/src/?raw=true)
+![Preview](https://github.com/andrew129/Space-Memory-Game/blob/master/src/spacememory.png?raw=true)
 
 # Technologies Used
 
